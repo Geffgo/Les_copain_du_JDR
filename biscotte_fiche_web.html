@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Biscotte — Fiche de personnage</title>
+<style>
+:root{--bg:#f3f4f6;--panel:#fff;--ink:#18212f;--muted:#64748b;--line:#dbe1e8;--red:#b91c1c;--blue:#1d4ed8;--gold:#d97706;--green:#059669}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;transition:background .25s}body.raging{background:#fff1f2}
+header{max-width:1440px;margin:auto;padding:22px 24px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px}header h1{margin:0;font-size:clamp(1.35rem,3vw,2rem)}header p{margin:3px 0;color:var(--muted);font-size:.9rem}.tag{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#fee2e2;color:#991b1b;padding:6px 10px;border-radius:999px}
+main{max-width:1440px;margin:auto;padding:12px 24px 32px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 3px 12px #0f172a0a}.panel{padding:20px;display:flex;flex-direction:column;gap:17px}.panel h2{font-size:1.35rem;margin:0;padding-bottom:10px;border-bottom:1px solid var(--line)}.combat-title{color:var(--red)}.section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#475569;font-weight:800;margin:0 0 10px}
+.grid{display:grid;gap:12px}.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}.card{padding:13px;background:#f8fafc;box-shadow:none;border-radius:14px}.stat-card{text-align:center;padding:12px 8px}.stat-card input{width:100%;font-size:1.8rem;font-weight:850;text-align:center;border:0;background:transparent;color:#111827;padding:2px}.stat-card .mod{display:inline-block;background:white;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-weight:800;margin:3px 0 9px}.label{font-size:.72rem;text-transform:uppercase;font-weight:800;color:var(--muted);letter-spacing:.04em}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.row+.row{margin-top:9px}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}.mini{border:1px solid var(--line);background:#fff;border-radius:7px;padding:3px 9px;font-weight:800;color:#334155}.counter{display:flex;align-items:center;gap:9px}.counter strong{font-size:1.35rem}.hp-value{color:var(--green);font-weight:900}.bar{height:13px;background:#cbd5e1;border-radius:99px;overflow:hidden;margin:8px 0 12px}.bar>div{height:100%;width:100%;background:var(--green);transition:width .2s}.number-input{width:54px;text-align:center;border:1px solid var(--line);border-radius:7px;background:#fff;padding:4px}.roll{border:1px solid var(--line);background:white;color:#334155;border-radius:7px;padding:6px 8px;font-size:.75rem;font-family:ui-monospace,monospace;font-weight:700}.roll:hover{background:#ecfdf5;border-color:#86efac}.list{display:flex;flex-direction:column;gap:6px;max-height:310px;overflow:auto;padding-right:3px}.list-row{display:flex;justify-content:space-between;align-items:center;gap:8px;background:white;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:.82rem}.dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:#e2e8f0;border:1px solid #cbd5e1;margin-right:7px}.dot.pro{background:#f59e0b;border-color:#f59e0b}.weapon{border:2px solid var(--line);background:#f8fafc;border-radius:12px;padding:12px;cursor:pointer}.weapon.active{background:#fff;border-color:#fbbf24;box-shadow:0 2px 8px #f59e0b20}.weapon p{font-size:.76rem;color:var(--muted);margin:8px 0 0}.weapon-actions{display:flex;gap:6px}.weapon-actions .roll{font-family:inherit}.rage-card{border:2px solid #fecaca;background:#fff7f7}.rage-card.active{background:#fff1f2;border-color:#f87171}.primary{width:100%;border:1px solid #b91c1c;background:#fff;color:#991b1b;padding:9px;border-radius:9px;font-weight:800}.primary.on{background:#dc2626;color:white}.blue{background:#eff6ff;border-color:#bfdbfe}.blue h3{color:#1e40af}.blue .roll{color:#1d4ed8;border-color:#bfdbfe}.ability{border-radius:12px;padding:12px;border:1px solid #bfdbfe;background:#eff6ff;display:flex;flex-direction:column;justify-content:space-between;gap:10px}.ability.red{background:#fff1f2;border-color:#fecaca}.ability h3{margin:0;font-size:.85rem}.ability p{font-size:.75rem;margin:4px 0;color:#475569}.spell{background:white;border:1px solid #bfdbfe;border-radius:9px;padding:10px;margin-top:8px}.spell h4{margin:0 0 4px;font-size:.8rem;color:#1e3a8a}.spell p{margin:0;font-size:.74rem;color:#475569}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;border-radius:99px;padding:10px 16px;box-shadow:0 8px 30px #0003;font-size:.83rem;z-index:10;max-width:90vw;overflow-wrap:anywhere}.muted{color:var(--muted)}.disabled{opacity:.45;pointer-events:none;filter:grayscale(1)}.checks{display:flex;gap:10px}.checks input{width:17px;height:17px;accent-color:var(--green)}.checks.fail input{accent-color:#dc2626}.hint{font-size:.72rem;color:var(--muted)}
+@media(max-width:900px){main{grid-template-columns:1fr;max-width:760px}.panel{padding:16px}header{padding:18px 16px 8px}main{padding:10px 16px 24px}}
+@media(max-width:440px){.two{grid-template-columns:1fr}.three{gap:8px}.stat-card{padding:9px 5px}.panel{padding:13px}.weapon .row{align-items:flex-start;flex-direction:column}.weapon-actions{align-self:flex-end}.ability-grid{grid-template-columns:1fr}.label{font-size:.66rem}}
+</style>
+</head>
+<body>
+<header><div><h1>⚔️ Biscotte</h1><p>Fiche de personnage · Suivi des aventures et du combat</p></div><span class="tag">Mode aventure</span></header>
+<main>
+<section class="panel">
+<h2>🛡️ Fiche de personnage</h2>
+<div class="grid two">
+ <div class="card">
+  <div class="row"><span class="label">Points de vie</span><div class="counter"><button class="mini" id="hpMinus">−</button><strong class="hp-value" id="hpText">64 / 64</strong><button class="mini" id="hpPlus">+</button></div></div>
+  <div class="bar"><div id="hpBar"></div></div>
+  <div class="row"><span class="label">PV temporaires</span><div class="counter"><button class="mini" id="tempMinus">−</button><input class="number-input" id="tempHp" type="number" min="0" max="30" value="0"><button class="mini" id="tempPlus">+</button></div></div>
+ </div>
+ <div class="grid" style="gap:10px">
+  <div class="card row"><span class="label">Inspiration</span><div class="counter"><button class="mini" id="inspMinus">−</button><strong id="inspiration" style="color:#d97706">1</strong><button class="mini" id="inspPlus">+</button></div></div>
+  <div class="card">
+   <div class="label" style="margin-bottom:8px;text-align:center">Jets contre la mort</div>
+   <div class="row"><span style="color:#059669;font-size:.82rem;font-weight:700">Succès</span><div class="checks" id="successChecks"></div></div>
+   <div class="row"><span style="color:#dc2626;font-size:.82rem;font-weight:700">Échecs</span><div class="checks fail" id="failChecks"></div></div>
+  </div>
+ </div>
+</div>
+<div><h3 class="section-title">Caractéristiques · Modificateurs calculés automatiquement</h3><div class="grid three" id="stats"></div></div>
+<div class="grid two">
+ <div class="card"><h3 class="section-title">Jets de sauvegarde</h3><div class="list" id="saves"></div></div>
+ <div class="card"><h3 class="section-title">Compétences</h3><div class="list" id="skills"></div></div>
+</div>
+</section>
+<section class="panel">
+<h2 class="combat-title">⚔️ Mode Combat</h2>
+<div class="grid two">
+ <div class="card" style="text-align:center"><div class="label">Classe d'armure</div><div id="ac" style="font-size:2.5rem;font-weight:900">17</div><div class="hint" id="acHint">+1 Défense inclus</div></div>
+ <div class="card rage-card" id="rageCard"><div class="row"><strong style="color:#b91c1c">🔥 Rage</strong><select id="rageUses" class="number-input" style="width:auto"><option>0</option><option>1</option><option>2</option><option selected>3</option></select><span class="hint">/ 3</span></div><button id="rageToggle" class="primary" style="margin-top:10px">Activer (Dégâts +2)</button></div>
+</div>
+<div class="card"><h3 class="section-title">Sélection d'arme</h3><div class="grid" style="gap:9px">
+ <div class="weapon active" id="axe" data-weapon="hache"><div class="row"><strong>Hache à deux mains</strong><div class="weapon-actions"><button class="roll" data-roll="attack">Copier Atq</button><button class="roll" data-roll="damage">Copier Dég</button></div></div><p id="axeStats">Atq : 1d20+7 · Dégâts : 1d12+4</p></div>
+ <div class="weapon" id="scimitar" data-weapon="cimeterre"><div class="row"><strong>Cimeterre d'argent + Bouclier</strong><div class="weapon-actions"><button class="roll" data-roll="attack">Copier Atq</button><button class="roll" data-roll="damage">Copier Dég</button></div></div><p id="scimitarStats">Atq : 1d20+7 · Dégâts : 1d6+4</p></div>
+</div></div>
+<div class="grid three ability-grid">
+ <div class="ability red"><div><h3>Fureur divine</h3><p>Première touche en rage : dégâts radiants ou nécrotiques supplémentaires.</p></div><button class="roll" data-copy=":roll 1d6+2">Copier 1d6+2</button></div>
+ <div class="ability"><div><h3>Imposition des mains</h3><p>Réserve de soins disponible.</p></div><div class="counter" style="justify-content:center"><button class="mini" id="handsMinus">−</button><strong id="hands">10</strong><span class="hint">/ 10</span><button class="mini" id="handsPlus">+</button></div></div>
+ <div class="ability"><div><h3>Sens divin</h3><p>Utilisations restantes.</p></div><div class="counter" style="justify-content:center"><button class="mini" id="senseMinus">−</button><strong id="sense">3</strong><span class="hint">/ 3</span><button class="mini" id="sensePlus">+</button></div></div>
+</div>
+<div class="card blue" id="spells">
+ <div class="row" style="border-bottom:1px solid #bfdbfe;padding-bottom:9px"><strong>✨ Sorts & magie</strong><div class="counter"><span class="label">Slots niv. 1</span><label><input type="checkbox" class="slot"> 1</label><label><input type="checkbox" class="slot"> 2</label></div></div>
+ <div class="row" style="background:white;border:1px solid #bfdbfe;padding:8px;border-radius:8px;margin-top:10px"><span style="font-size:.8rem">DD des sorts : <strong id="spellDC">13</strong></span><button class="roll" id="copyDC">Copier le calcul</button></div>
+ <div class="spell"><div class="row"><h4>Châtiment divin (Paladin)</h4><button class="roll" data-copy=":roll 2d8">2d8</button></div><p>Consomme un emplacement de sort. Ajoute des dégâts radiants lors d'une touche au corps à corps.</p></div>
+ <div class="spell"><h4>Duel forcé (Enchantement · niveau 1)</h4><p>Action bonus, portée 9 m, concentration 1 min. La cible effectue un jet de Sagesse. En cas d'échec, elle subit un désavantage pour attaquer les autres. Elle peut refaire un jet de Sagesse si elle s'éloigne à plus de 9 m. Le sort prend fin si vous attaquez quelqu'un d'autre ou vous éloignez.</p></div>
+ <div class="spell"><h4>Châtiment calcinant (niveau 1)</h4><p>Action bonus, concentration 1 min. À la prochaine attaque au corps à corps : +1d6 dégâts de feu et la cible s'enflamme (jet de Constitution ou 1d6 dégâts de feu).</p></div>
+ <div class="spell"><h4>Faveur divine (niveau 1)</h4><p>Action bonus, concentration 1 min. Vos attaques d'armes infligent +1d4 dégâts radiants supplémentaires.</p></div>
+</div>
+</section>
+</main>
+<div id="toast" class="toast" hidden></div>
+<script>
+const $=id=>document.getElementById(id);
+const state={stats:{FOR:19,DEX:11,CON:15,INT:8,SAG:10,CHA:14},hp:64,tempHp:0,inspiration:1,raging:false,rageUses:3,weapon:'hache',hands:10,sense:3,success:[false,false,false],fail:[false,false,false]};
+const prof=3, names=[['Acrobaties','DEX',false],['Arcanes','INT',false],['Athlétisme','FOR',true],['Discrétion','DEX',false],['Dressage','SAG',false],['Escamotage','DEX',false],['Histoire','INT',false],['Intimidation','CHA',true],['Intuition','SAG',true],['Investigation','INT',false],['Médecine','SAG',false],['Nature','INT',false],['Perception','SAG',false],['Persuasion','CHA',false],['Religion','INT',true],['Représentation','CHA',false],['Survie','SAG',false],['Tromperie','CHA',false]];
+const saves=[['FOR',true],['DEX',true],['CON',false],['INT',false],['SAG',false],['CHA',false]];
+const mod=v=>Math.floor((v-10)/2), fmt=n=>n>=0?'+'+n:String(n);
+function toast(t){$('toast').textContent='✓ Copié : '+t;$('toast').hidden=false;clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('toast').hidden=true,2100)}
+function copy(t){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>toast(t)).catch(()=>fallbackCopy(t))}else fallbackCopy(t)}
+function fallbackCopy(t){const x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();try{document.execCommand('copy');toast(t)}catch(e){toast('Copie impossible : '+t)}x.remove()}
+function renderStats(){
+ $('stats').innerHTML=Object.entries(state.stats).map(([k,v])=>`<div class="card stat-card"><div class="label">${k}</div><input aria-label="Valeur ${k}" type="number" min="1" max="30" data-stat="${k}" value="${v}"><div class="mod">${fmt(mod(v))}</div><button class="roll" data-copy=":roll 1d20${fmt(mod(v))}">Copier le jet</button></div>`).join('');
+ $('saves').innerHTML=saves.map(([n,p])=>{let m=mod(state.stats[n])+(p?prof:0);return `<div class="list-row"><span><i class="dot ${p?'pro':''}"></i>${n}</span><button class="roll" data-copy=":roll 1d20${fmt(m)}">${fmt(m)} · Copier</button></div>`}).join('');
+ $('skills').innerHTML=names.map(([n,s,p])=>{let m=mod(state.stats[s])+(p?prof:0);return `<div class="list-row"><span><i class="dot ${p?'pro':''}"></i>${n}</span><button class="roll" data-copy=":roll 1d20${fmt(m)}">${fmt(m)} · Copier</button></div>`}).join('');
+ $('spellDC').textContent=8+prof+mod(state.stats.CHA);
+ $('copyDC').dataset.copy=`:roll 8+3+${mod(state.stats.CHA)}`;
+}
+function render(){
+ $('hpText').textContent=`${state.hp} / 64`;$('hpBar').style.width=(state.hp/64*100)+'%';
+ $('tempHp').value=state.tempHp;$('inspiration').textContent=state.inspiration;
+ $('ac').textContent=state.weapon==='cimeterre'?19:17;$('acHint').textContent=state.weapon==='cimeterre'?'+2 Bouclier actif':'+1 Défense inclus';
+ $('rageUses').value=state.rageUses;$('rageCard').classList.toggle('active',state.raging);$('rageToggle').classList.toggle('on',state.raging);$('rageToggle').textContent=state.raging?'Désactiver (Sorts bloqués)':'Activer (Dégâts +2)';
+ document.body.classList.toggle('raging',state.raging);$('spells').classList.toggle('disabled',state.raging);
+ const a=state.raging?2:0;$('axeStats').textContent=`Atq : 1d20+${7+a} · Dégâts : 1d12+${4+a}${a?' (Rage incluse)':''}`;$('scimitarStats').textContent=`Atq : 1d20+${7+a} · Dégâts : 1d6+${4+a}${a?' (Rage incluse)':''}`;
+ $('axe').classList.toggle('active',state.weapon==='hache');$('scimitar').classList.toggle('active',state.weapon==='cimeterre');
+ $('hands').textContent=state.hands;$('sense').textContent=state.sense;
+ $('successChecks').innerHTML=state.success.map((v,i)=>`<input type="checkbox" aria-label="Succès ${i+1}" data-death="success" data-index="${i}" ${v?'checked':''}>`).join('');
+ $('failChecks').innerHTML=state.fail.map((v,i)=>`<input type="checkbox" aria-label="Échec ${i+1}" data-death="fail" data-index="${i}" ${v?'checked':''}>`).join('');
+ renderStats();
+}
+function change(key,delta,min=0,max=999){state[key]=Math.max(min,Math.min(max,state[key]+delta));render()}
+$('hpMinus').onclick=()=>change('hp',-1,0,64);$('hpPlus').onclick=()=>change('hp',1,0,64);
+$('tempMinus').onclick=()=>change('tempHp',-1,0,30);$('tempPlus').onclick=()=>change('tempHp',1,0,30);
+$('inspMinus').onclick=()=>change('inspiration',-1);$('inspPlus').onclick=()=>change('inspiration',1);
+$('handsMinus').onclick=()=>change('hands',-1,0,10);$('handsPlus').onclick=()=>change('hands',1,0,10);
+$('senseMinus').onclick=()=>change('sense',-1,0,3);$('sensePlus').onclick=()=>change('sense',1,0,3);
+$('tempHp').onchange=e=>{state.tempHp=Math.max(0,Math.min(30,Number(e.target.value)||0));render()};
+$('rageUses').onchange=e=>{state.rageUses=Number(e.target.value);render()};
+$('rageToggle').onclick=()=>{state.raging=!state.raging;render()};
+$('axe').onclick=()=>{state.weapon='hache';render()};$('scimitar').onclick=()=>{state.weapon='cimeterre';render()};
+$('stats').addEventListener('change',e=>{if(e.target.dataset.stat){state.stats[e.target.dataset.stat]=Number(e.target.value)||0;render()}});
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-copy]');if(b){e.stopPropagation();copy(b.dataset.copy);return}
+ const w=e.target.closest('[data-roll]');if(w){e.stopPropagation();const a=state.raging?2:0;const t=w.dataset.roll==='attack'?`:roll 1d20+${7+a}`:`:roll ${state.weapon==='hache'?'1d12':'1d6'}+${4+a}`;copy(t)}
+});
+document.addEventListener('change',e=>{if(e.target.dataset.death){state[e.target.dataset.death][Number(e.target.dataset.index)]=e.target.checked}});
+render();
+</script>
+</body>
+</html>
