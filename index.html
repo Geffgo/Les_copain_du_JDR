@@ -81,7 +81,7 @@ function renderStats(){
  $('saves').innerHTML=saves.map(([n,p])=>{let m=mod(state.stats[n])+(p?prof:0);return `<div class="list-row"><span><i class="dot ${p?'pro':''}"></i>${n}</span><button class="roll" data-copy=":roll 1d20${fmt(m)}">${fmt(m)} · Copier</button></div>`}).join('');
  $('skills').innerHTML=names.map(([n,s,p])=>{let m=mod(state.stats[s])+(p?prof:0);return `<div class="list-row"><span><i class="dot ${p?'pro':''}"></i>${n}</span><button class="roll" data-copy=":roll 1d20${fmt(m)}">${fmt(m)} · Copier</button></div>`}).join('');
  $('spellDC').textContent=8+prof+mod(state.stats.CHA);
- $('copyDC').dataset.copy=`:roll 8+3+${mod(state.stats.CHA)}`;
+ $('copyDC').dataset.copy=`:roll 1d20+3+${mod(state.stats.CHA)}`;
 }
 function render(){
  $('hpText').textContent=`${state.hp} / 64`;$('hpBar').style.width=(state.hp/64*100)+'%';
